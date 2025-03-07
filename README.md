@@ -52,7 +52,7 @@ Loyihada quyidagi texnologiyalar ishlatilgan:
 2. Virtual muhit yaratish va faollashtirish:
    ```bash
    python -m venv venv
-   source venv/bin/activate  # Windows uchun: venv\Scripts\activate
+   source venv/bin/activate  
    ```
 
 3. Kerakli kutubxonalarni o‘rnatish:
