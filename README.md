@@ -1,103 +1,84 @@
-Ob-havo 🌦️
-Bu loyiha ob-havo ma'lumotlarini saqlash va boshqarish uchun ishlab chiqilgan Django veb-ilovasi. Loyiha orqali ob-havo prognozlari, tahlillar, va statistikalar o'rganish imkoniyati mavjud.
+# Ob-havo
 
-📋 Mundarija
-Texnologiyalar
-O'rnatish
-Loyihani klonlash
-Virtual muhitni yaratish
-Virtual muhitni faollashtirish
-Talab qilingan kutubxonalarni o'rnatish
-Ma'lumotlar bazasini yaratish
-Admin panelga kirish uchun superuser yaratish
-Serverni ishga tushirish
-Foydalanish
-Analytics (Tahlillar)
-Loyiha Tuzilmasi
-Loyiha Asoschisi
-🛠️ Texnologiyalar
-Python 3.x
-Django
-SQLite (yoki boshqa ma'lumotlar bazasi)
-Bootstrap (Frontend uchun)
-JavaScript (Analytics uchun)
-🚀 O'rnatish
-1. Loyihani klonlash
-Loyihani o'zingizning kompyuteringizga klonlash uchun quyidagi buyruqni ishlating:
+Ob-havo - bu ob-havo ma'lumotlarini olish va prognoz qilish uchun RESTful API.
 
-bash
-Копировать
-git clone https://github.com/damirrustambek0v/ob-havo.git 
-2. Virtual muhitni yaratish
-Django loyihasini izolyatsiyalash uchun virtual muhit yaratish:
+## Loyiha haqida
+Ushbu loyiha turli joylashuvlar uchun ob-havo ma'lumotlarini saqlash, prognozlarni chiqarish va tahliliy statistikalarni olish imkonini beradi.
 
-bash
-Копировать
-python -m venv venv
-3. Virtual muhitni faollashtirish
-Windows:
-bash
-Копировать
-venv\Scripts\activate
-macOS/Linux:
-bash
-Копировать
-source venv/bin/activate
-4. Talab qilingan kutubxonalarni o'rnatish
-Loyihada ishlatadigan barcha kutubxonalarni o'rnatish uchun:
+## Texnologiyalar
+Loyihada quyidagi texnologiyalar ishlatilgan:
+- Python 3.12
+- Django Rest Framework (DRF)
+- SQLite3
 
-bash
-Копировать
-pip install -r requirements.txt
-5. Ma'lumotlar bazasini yaratish
-Django ma'lumotlar bazasini yaratish uchun:
+## API Endpointlar
 
-bash
-Копировать
-python manage.py migrate
-6. Admin panelga kirish uchun superuser yaratish
-Admin panelga kirish uchun superuser yaratish:
+### Locations (Joylar):
+- `GET http://127.0.0.1:8000/api/locations/` - Barcha joylar ro‘yxati
+- `POST http://127.0.0.1:8000/api/locations/` - Yangi joy qo‘shish
+- `GET http://127.0.0.1:8000/api/locations/{id}/` - Aniq joy ma’lumotlari
+- `PUT http://127.0.0.1:8000/api/locations/{id}/` - Joy ma’lumotlarini yangilash
+- `DELETE http://127.0.0.1:8000/api/locations/{id}/` - Joyni o‘chirish
 
-bash
-Копировать
-python manage.py createsuperuser
-Superuser yaratishda foydalanuvchi nomi, email va parolni kiritishingiz kerak.
+### WeatherData (Ob-havo ma’lumotlari):
+- `GET http://127.0.0.1:8000/api/weather-data/` - Barcha ob-havo ma’lumotlari
+- `POST http://127.0.0.1:8000/api/weather-data/` - Yangi ob-havo ma’lumoti qo‘shish
+- `GET http://127.0.0.1:8000/api/weather-data/{id}/` - Aniq ob-havo ma’lumoti
+- `PUT http://127.0.0.1:8000/api/weather-data/{id}/` - Ob-havo ma’lumotini yangilash
+- `DELETE http://127.0.0.1:8000/api/weather-data/{id}/` - Ob-havo ma’lumotini o‘chirish
+- `GET http://127.0.0.1:8000/api/weather-data/location/{location_id}/` - Ma’lum joy uchun ob-havo ma’lumotlari
 
-7. Serverni ishga tushirish
-Loyihani ishga tushirish uchun:
+### Forecasts (Prognozlar):
+- `GET http://127.0.0.1:8000/api/forecasts/` - Barcha prognozlar
+- `POST http://127.0.0.1:8000/api/forecasts/` - Yangi prognoz qo‘shish
+- `GET http://127.0.0.1:8000/api/forecasts/{id}/` - Aniq prognoz ma’lumotlari
+- `PUT http://127.0.0.1:8000/api/forecasts/{id}/` - Prognozni yangilash
+- `DELETE http://127.0.0.1:8000/api/forecasts/{id}/` - Prognozni o‘chirish
+- `GET http://127.0.0.1:8000/api/forecasts/location/{location_id}/` - Ma’lum joy uchun prognozlar
 
-bash
-Копировать
-python manage.py runserver
-Brauzeringizda http://127.0.0.1:8000/ manziliga o'ting.
+### Analytics (Tahlillar):
+- `GET http://127.0.0.1:8000/api/analytics/temperature-avg/` - O‘rtacha harorat (barcha joylar bo‘yicha)
+- `GET http://127.0.0.1:8000/api/analytics/precipitation-sum/` - Umumiy yog‘ingarchilik miqdori
+- `GET http://127.0.0.1:8000/api/analytics/wind-speed-max/` - Maksimal shamol tezligi
 
-🖥️ Foydalanish
-Admin paneli: http://127.0.0.1:8000/admin/ manzilida mavjud. Superuser sifatida kirib, ob-havo ma'lumotlarini boshqarishingiz mumkin.
-Analytics (Tahlillar): Ob-havo tahlillari va statistikalarini ko'rish uchun maxsus sahifa mavjud.
-🖥️ Analytics (Tahlillar)
-Loyihada ob-havo tahlil qilish imkoniyatlari mavjud. Bu bo'limda foydalanuvchilar ob-havo prognozlari va statistikalarini ko'rib chiqishlari mumkin.
+## O'rnatish va Ishga tushirish
 
-Ob-havo Loyiha Tuzilmasi 📁
-bash
-Копировать
-ob_havo/
-├── manage.py
-├── ob_havo/  # Django app
-│   ├── migrations/
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py
-│   ├── views.py
-│   └── ...
-├── requirements.txt
-└── ...
-🖥️ Loyiha asoschisi
-Asoschi: [Ismingiz yoki Username]
+1. Loyihani klonlash:
+   ```bash
+   git clone https://github.com/username/ob-havo.git
+   cd ob-havo
+   ```
 
-Loyihaning barcha kodlari va hujjatlari open-source bo'lib, siz o'zingizning ehtiyojlaringizga moslab tahrir qilishingiz mumkin.
+2. Virtual muhit yaratish va faollashtirish:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Windows uchun: venv\Scripts\activate
+   ```
 
-Bu README fayli yordamida Django ob-havo loyihasini o'rnatish va undan foydalanish haqida to'liq ma'lumot olishingiz mumkin.
+3. Kerakli kutubxonalarni o‘rnatish:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-By Rustambekov D
+4. Ma'lumotlar bazasini yaratish:
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+
+5. Serverni ishga tushirish:
+   ```bash
+   python manage.py runserver
+   ```
+
+Endi API `http://127.0.0.1:8000/` manzilida ishlaydi.
+
+## Muallif
+# Damirbek Rustambekov
+
+# GitHub Profilingiz
+- [GitHub Profilingiz](https://github.com/damirrustambek0v)
+
+
+
 
